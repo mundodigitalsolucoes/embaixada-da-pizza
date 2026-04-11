@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="space-y-4">
-            <img src={logo} alt="Embaixada da Pizza" className="h-14 w-auto" />
+            <img src={logo} alt="Embaixada da Pizza" className="h-28 w-auto" />
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
               A melhor experiência em pizza de São José do Rio Preto. Rodízio todos os dias, delivery no canal próprio e o programa Cliente Embaixador.
             </p>
