@@ -38,7 +38,7 @@ export default function Header() {
     >
       <div className="container flex items-center justify-between">
         <Link to="/" className="flex-shrink-0">
-          <img src={logo} alt="Embaixada da Pizza" className="h-12 md:h-14 w-auto" />
+          <img src={logo} alt="Embaixada da Pizza" className="h-24 md:h-28 w-auto" />
         </Link>
 
         {/* Desktop Nav */}
