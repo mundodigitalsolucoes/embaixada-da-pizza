@@ -14,8 +14,9 @@ const navLinks = [
   { label: "Contato", href: "/contato" },
 ];
 
-const WHATSAPP_URL = "https://wa.me/551732261279?text=Olá! Gostaria de mais informações.";
-const CARDAPIO_URL = "#cardapio-web";
+const WHATSAPP_URL =
+  "https://wa.me/551732221279?text=Olá! Gostaria de mais informações sobre a Embaixada da Pizza.";
+const CARDAPIO_URL = "https://cardapio.embaixadadapizza.com.br/";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -28,7 +29,9 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => { setOpen(false); }, [location]);
+  useEffect(() => {
+    setOpen(false);
+  }, [location]);
 
   return (
     <header
@@ -41,7 +44,6 @@ export default function Header() {
           <img src={logo} alt="Embaixada da Pizza" className="h-24 md:h-28 w-auto" />
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-1">
           {navLinks.map((l) => (
             <Link
@@ -63,22 +65,32 @@ export default function Header() {
             <Link to="/cliente-embaixador">Cliente Embaixador</Link>
           </Button>
           <Button variant="cta" size="sm" asChild>
-            <a href={CARDAPIO_URL}>Pedir Agora</a>
+            <a href={CARDAPIO_URL} target="_blank" rel="noopener noreferrer">
+              Pedir Agora
+            </a>
           </Button>
         </div>
 
-        {/* Mobile */}
         <div className="flex lg:hidden items-center gap-2">
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="p-2 text-primary-foreground">
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-primary-foreground"
+            aria-label="Falar no WhatsApp"
+          >
             <Phone className="w-5 h-5" />
           </a>
-          <button onClick={() => setOpen(!open)} className="p-2 text-primary-foreground">
+          <button
+            onClick={() => setOpen(!open)}
+            className="p-2 text-primary-foreground"
+            aria-label={open ? "Fechar menu" : "Abrir menu"}
+          >
             {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
       {open && (
         <div className="lg:hidden bg-primary border-t border-primary-foreground/10 animate-fade-in">
           <nav className="container py-4 flex flex-col gap-1">
@@ -95,12 +107,15 @@ export default function Header() {
                 {l.label}
               </Link>
             ))}
+
             <div className="flex flex-col gap-2 mt-3 px-4">
               <Button variant="gold" asChild>
                 <Link to="/cliente-embaixador">Cliente Embaixador</Link>
               </Button>
               <Button variant="cta" asChild>
-                <a href={CARDAPIO_URL}>Pedir Agora</a>
+                <a href={CARDAPIO_URL} target="_blank" rel="noopener noreferrer">
+                  Pedir Agora
+                </a>
               </Button>
             </div>
           </nav>
