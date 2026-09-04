@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 
 const WHATSAPP_URL =
-  "https://wa.me/551732221279?text=Olá! Gostaria de mais informações sobre a Embaixada da Pizza.";
+  "https://wa.me/551732261279?text=Olá! Gostaria de mais informações sobre a Embaixada da Pizza.";
 const CARDAPIO_URL = "https://cardapio.embaixadadapizza.com.br/";
 const INSTAGRAM_URL = "https://www.instagram.com/embaixadadapizzarp/";
 const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61550981906994";
@@ -23,7 +23,7 @@ const contatoJsonLd = {
   "@type": "Restaurant",
   name: "Embaixada da Pizza",
   url: "https://embaixadadapizza.com.br/",
-  telephone: "+55 17 3222-1279",
+  telephone: "+55 17 3226-1279",
   address: {
     "@type": "PostalAddress",
     streetAddress: "R. Paulo Vidali, 250",
@@ -125,7 +125,7 @@ export default function ContatoPage() {
                   <Phone className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="font-semibold text-foreground">Telefone / WhatsApp</p>
-                    <p className="text-sm text-muted-foreground">(17) 3222-1279</p>
+                    <p className="text-sm text-muted-foreground">(17) 3226-1279</p>
                   </div>
                 </div>
 
