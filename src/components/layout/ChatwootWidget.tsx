@@ -8,6 +8,7 @@ export default function ChatwootWidget() {
     const utmSource = params.get("utm_source") || "site";
     const utmMedium = params.get("utm_medium") || "widget_atendimento";
     const utmCampaign = params.get("utm_campaign") || "atendimento_site";
+    const utmContent = params.get("utm_content") || "widget_whatsapp";
     const page = window.location.pathname || "/";
 
     const message = [
@@ -16,8 +17,23 @@ export default function ChatwootWidget() {
       `Origem: ${utmSource}`,
       `Mídia: ${utmMedium}`,
       `Campanha: ${utmCampaign}`,
+      `Conteúdo: ${utmContent}`,
       `Página: ${page}`,
     ].join("\n");
+
+    const dataLayerWindow = window as typeof window & {
+      dataLayer?: Array<Record<string, unknown>>;
+    };
+
+    dataLayerWindow.dataLayer = dataLayerWindow.dataLayer || [];
+    dataLayerWindow.dataLayer.push({
+      event: "whatsapp_click",
+      source: utmSource,
+      medium: utmMedium,
+      campaign: utmCampaign,
+      content: utmContent,
+      page_path: page,
+    });
 
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
@@ -26,7 +42,7 @@ export default function ChatwootWidget() {
   return (
     <button
       onClick={openSupport}
-      className="hidden lg:flex fixed bottom-6 right-6 z-50 items-center gap-2 bg-[hsl(142_70%_40%)] text-primary-foreground px-5 py-3 rounded-full shadow-premium hover:shadow-lg transition-all group"
+      className="flex fixed bottom-6 right-6 z-50 items-center gap-2 bg-[hsl(142_70%_40%)] text-primary-foreground px-5 py-3 rounded-full shadow-premium hover:shadow-lg transition-all group"
       aria-label="Abrir atendimento no WhatsApp"
     >
       <MessageCircle className="w-5 h-5" />
