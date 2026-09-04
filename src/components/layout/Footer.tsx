@@ -4,7 +4,7 @@ import logo from "@/assets/logo-embaixada.svg";
 
 const CARDAPIO_URL = "https://cardapio.embaixadadapizza.com.br/";
 const WHATSAPP_URL =
-  "https://wa.me/551732221279?text=Olá! Gostaria de mais informações sobre a Embaixada da Pizza.";
+  "https://wa.me/551732261279?text=Olá! Gostaria de mais informações sobre a Embaixada da Pizza.";
 const INSTAGRAM_URL = "https://www.instagram.com/embaixadadapizzarp/";
 const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61550981906994";
 
@@ -127,7 +127,7 @@ export default function Footer() {
 
               <li className="flex gap-2 items-center">
                 <Phone className="w-4 h-4 flex-shrink-0 text-accent" />
-                <span>(17) 3222-1279</span>
+                <span>(17) 3226-1279</span>
               </li>
 
               <li className="flex gap-2 items-start">
