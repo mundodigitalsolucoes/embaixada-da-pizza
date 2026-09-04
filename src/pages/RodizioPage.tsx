@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { UtensilsCrossed, Users, Clock, MapPin } from "lucide-react";
 
 const WHATSAPP_URL =
-  "https://wa.me/551732221279?text=Olá! Gostaria de saber mais sobre o rodízio da Embaixada da Pizza.";
+  "https://wa.me/551732261279?text=Olá! Gostaria de saber mais sobre o rodízio da Embaixada da Pizza.";
 const MAPS_URL =
   "https://maps.google.com/?q=R.+Paulo+Vidali,+250+Higienópolis+São+José+do+Rio+Preto";
 
@@ -12,7 +12,7 @@ const rodizioJsonLd = {
   "@type": "Restaurant",
   name: "Embaixada da Pizza",
   url: "https://embaixadadapizza.com.br/rodizio",
-  telephone: "+55 17 3222-1279",
+  telephone: "+55 17 3226-1279",
   servesCuisine: "Pizza",
   address: {
     "@type": "PostalAddress",
