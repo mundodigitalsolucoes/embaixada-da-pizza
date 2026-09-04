@@ -1,37 +1,36 @@
-import { Headphones } from "lucide-react";
+import { MessageCircle } from "lucide-react";
+
+const WHATSAPP_NUMBER = "551732261279";
 
 export default function ChatwootWidget() {
   const openSupport = () => {
-    const widgetWindow = window as typeof window & {
-      $chatwoot?: { toggle?: (state?: "open" | "close") => void };
-      MDSAtendimentoWidget?: { open?: () => void };
-    };
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get("utm_source") || "site";
+    const utmMedium = params.get("utm_medium") || "widget_atendimento";
+    const utmCampaign = params.get("utm_campaign") || "atendimento_site";
+    const page = window.location.pathname || "/";
 
-    if (widgetWindow.MDSAtendimentoWidget?.open) {
-      widgetWindow.MDSAtendimentoWidget.open();
-      return;
-    }
+    const message = [
+      "Olá! Vim pelo site da Embaixada da Pizza e preciso de atendimento.",
+      "",
+      `Origem: ${utmSource}`,
+      `Mídia: ${utmMedium}`,
+      `Campanha: ${utmCampaign}`,
+      `Página: ${page}`,
+    ].join("\n");
 
-    if (widgetWindow.$chatwoot?.toggle) {
-      widgetWindow.$chatwoot.toggle("open");
-      return;
-    }
-
-    window.open(
-      "https://wa.me/551732261279?text=Olá! Preciso de atendimento da Embaixada da Pizza.",
-      "_blank",
-      "noopener,noreferrer"
-    );
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
     <button
       onClick={openSupport}
-      className="hidden lg:flex fixed bottom-6 right-6 z-50 items-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-full shadow-premium hover:shadow-lg transition-all group"
-      aria-label="Abrir Central de Atendimento"
+      className="hidden lg:flex fixed bottom-6 right-6 z-50 items-center gap-2 bg-[hsl(142_70%_40%)] text-primary-foreground px-5 py-3 rounded-full shadow-premium hover:shadow-lg transition-all group"
+      aria-label="Abrir atendimento no WhatsApp"
     >
-      <Headphones className="w-5 h-5" />
-      <span className="text-sm font-semibold group-hover:underline">Atendimento</span>
+      <MessageCircle className="w-5 h-5" />
+      <span className="text-sm font-semibold group-hover:underline">WhatsApp</span>
     </button>
   );
 }
