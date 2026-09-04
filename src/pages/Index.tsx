@@ -16,7 +16,7 @@ const homeJsonLd = {
   name: "Embaixada da Pizza",
   image: "https://embaixadadapizza.com.br/og-image.jpg",
   url: "https://embaixadadapizza.com.br/",
-  telephone: "+55 17 3222-1279",
+  telephone: "+55 17 3226-1279",
   servesCuisine: "Pizza",
   priceRange: "$$",
   address: {
