@@ -19,7 +19,7 @@ const deliveryJsonLd = {
     "@type": "Restaurant",
     name: "Embaixada da Pizza",
     url: "https://embaixadadapizza.com.br/",
-    telephone: "+55 17 3222-1279",
+    telephone: "+55 17 3226-1279",
     address: {
       "@type": "PostalAddress",
       streetAddress: "R. Paulo Vidali, 250",
