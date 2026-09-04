@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,9 +11,33 @@ import RodizioPage from "./pages/RodizioPage";
 import ConfraternizacoesPage from "./pages/ConfraternizacoesPage";
 import BlogPage from "./pages/BlogPage";
 import ContatoPage from "./pages/ContatoPage";
+import BioPage from "./pages/BioPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
+
+const AppContent = () => {
+  const { pathname } = useLocation();
+
+  if (pathname === "/bio" || pathname === "/bio/") {
+    return <BioPage />;
+  }
+
+  return (
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/delivery" element={<DeliveryPage />} />
+        <Route path="/cliente-embaixador" element={<ClienteEmbaixadorPage />} />
+        <Route path="/rodizio" element={<RodizioPage />} />
+        <Route path="/confraternizacoes" element={<ConfraternizacoesPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/contato" element={<ContatoPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Layout>
+  );
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -21,18 +45,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/delivery" element={<DeliveryPage />} />
-            <Route path="/cliente-embaixador" element={<ClienteEmbaixadorPage />} />
-            <Route path="/rodizio" element={<RodizioPage />} />
-            <Route path="/confraternizacoes" element={<ConfraternizacoesPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/contato" element={<ContatoPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Layout>
+        <AppContent />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
